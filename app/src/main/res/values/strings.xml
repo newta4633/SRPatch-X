@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SRPatch X</string>
+
+    <string name="output_name_format">%s_SRPatchX.%s</string>
+    <string name="permission_storage_title">Storage Access</string>
+    <string name="permission_storage_msg">This permission is required to allow the app to access APK files stored on your device. Without this permission, the app will not be able to locate or process APK files.</string>
+    <string name="btn_grant">Grant</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="files_empty">There\'s nothing here</string>
+    <string name="btn_apply">Apply</string>
+    <string name="btn_patch">Patch</string>
+    <string name="btn_install">Install</string>
+    <string name="apk_info_desc"><![CDATA[minSdkVersion: %1$d\ntargetSdkVersion: %2$d\ncompileSdkVersion: %3$d\npackage: %4$s]]></string>
+    <string name="label_patched">Patched</string>
+
+    <string name="apk_no_sign_title">Verified failed</string>
+    <string name="apk_no_sign_msg">Unable to read APK signature. The APK file may be corrupted or invalid.</string>
+    <string name="apk_sign_mismatch_title">Signature Mismatched</string>
+    <string name="apk_sign_mismatch_msg">The APK and the signature information of the installed application are inconsistent. Should the application be uninstalled first?</string>
+    <string name="btn_uninstall">Uninstall</string>
+    <string name="title_error">Error</string>
+    <string name="btn_close">Close</string>
+
+    <string name="deleted_msg">Successfully deleted</string>
+    <string name="delete_confirm_btn">Delete</string>
+    <string name="delete_confirm_title">Permanently delete?</string>
+    <string name="delete_confirm_message">You are attempting to delete **%s**. Please be careful as this action is **permanent** and cannot be **undone**.</string>
+</resources>
