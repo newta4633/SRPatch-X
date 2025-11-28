@@ -48,3 +48,10 @@ assumes no liability for misuse.
 ## Downloads
 
 Download the latest version from the [Releases](releases) page.
+
+<div style="overflow-x: auto; white-space: nowrap;">
+  <img src="screenshots/01.png" height="500">
+  <img src="screenshots/02.png" height="500">
+  <img src="screenshots/03.png" height="500">
+  <img src="screenshots/04.png" height="500">
+</div>
