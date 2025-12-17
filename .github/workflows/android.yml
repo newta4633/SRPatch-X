@@ -23,6 +23,20 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    # --- ВОТ ЭТОТ БЛОК МЫ ДОБАВИЛИ ---
+    - name: Create signing.properties
+      run: |
+        if [ -f signing.properties.example ]; then
+          cp signing.properties.example signing.properties
+        fi
+        if [ -f app/signing.properties.example ]; then
+          cp app/signing.properties.example app/signing.properties
+        fi
+        # На всякий случай создаем пустые файлы, если примеров нет
+        touch signing.properties
+        touch app/signing.properties
+    # ---------------------------------
+
     - name: Build with Gradle
       run: ./gradlew assembleDebug --stacktrace
 
