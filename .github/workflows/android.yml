@@ -23,19 +23,30 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # --- ВОТ ЭТОТ БЛОК МЫ ДОБАВИЛИ ---
-    - name: Create signing.properties
+    # --- ИСПРАВЛЕННЫЙ БЛОК ---
+    - name: Generate Dummy Keystore
       run: |
-        if [ -f signing.properties.example ]; then
-          cp signing.properties.example signing.properties
-        fi
-        if [ -f app/signing.properties.example ]; then
-          cp app/signing.properties.example app/signing.properties
-        fi
-        # На всякий случай создаем пустые файлы, если примеров нет
-        touch signing.properties
-        touch app/signing.properties
-    # ---------------------------------
+        # 1. Генерируем временный ключ (keystore), чтобы Gradle было что читать
+        keytool -genkeypair -v \
+          -keystore debug.jks \
+          -keyalg RSA \
+          -keysize 2048 \
+          -validity 10000 \
+          -alias key0 \
+          -dname "CN=Android Debug,O=Android,C=US" \
+          -storepass 123456 \
+          -keypass 123456
+
+        # 2. Создаем файл настроек и пишем туда путь к нашему ключу
+        # Важно: storeFile указывает на файл ../debug.jks (относительно папки app)
+        echo "storeFile=../debug.jks" > app/signing.properties
+        echo "storePassword=123456" >> app/signing.properties
+        echo "keyAlias=key0" >> app/signing.properties
+        echo "keyPassword=123456" >> app/signing.properties
+        
+        # На всякий случай дублируем в корень
+        cp app/signing.properties signing.properties
+    # -------------------------
 
     - name: Build with Gradle
       run: ./gradlew assembleDebug --stacktrace
